@@ -1,0 +1,187 @@
+
+/* ------------------------------------------------------------------------------
+*
+*  # Alert component
+*
+*  Overrides for alerts bootstrap component
+*
+*  Version: 1.1
+*  Latest update: Mar 10, 2016
+*
+* ---------------------------------------------------------------------------- */
+.alert {
+  position: relative;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.alert .alert-heading {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+.alert .alert-link {
+  color: inherit;
+}
+.alert .close,
+.alert .close:hover,
+.alert .close:focus {
+  color: inherit;
+}
+.alert-primary {
+  background-color: #E3F2FD;
+  border-color: #1E88E5;
+  color: #1565C0;
+}
+.alert-primary hr {
+  border-top-color: #187bd1;
+}
+.alert-primary .alert-link {
+  color: #104d92;
+}
+.alert-primary,
+.alert-primary .close {
+  color: #104d92;
+}
+.alert-success,
+.alert-success .close {
+  color: #205823;
+  background-color: #e8f5e9;
+}
+.alert-info,
+.alert-info .close {
+  color: #00545c;
+}
+.alert-warning,
+.alert-warning .close {
+  color: #aa3510;
+}
+.alert-danger,
+.alert-danger .close {
+  color: #9c1f1f;
+}
+.alert.alert-rounded {
+  border-radius: 100px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+.alert-component[class*=alert-styled-] {
+  background-color: #fff;
+}
+.alert[class*=bg-] a,
+.alert[class*=bg-] .alert-link {
+  color: #fff;
+}
+.alert[class*=alert-styled-]:after {
+  content: '\e9a2';
+  font-family: 'icomoon';
+  color: #fff;
+  width: 44px;
+  left: -44px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  margin-top: -8px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.alert[class*=alert-styled-].alert-danger:after,
+.alert[class*=alert-styled-][class*=bg-danger]:after {
+  content: '\ed64';
+}
+.alert[class*=alert-styled-].alert-success:after,
+.alert[class*=alert-styled-][class*=bg-success]:after {
+  content: '\ed6e';
+}
+.alert[class*=alert-styled-].alert-warning:after,
+.alert[class*=alert-styled-][class*=bg-warning]:after {
+  content: '\e9bd';
+}
+.alert[class*=alert-styled-].alert-info:after,
+.alert[class*=alert-styled-][class*=bg-info]:after {
+  content: '\e9b9';
+}
+.alert.alert-styled-right:after {
+  left: auto;
+  right: -44px;
+}
+.alert.alert-styled-custom:after {
+  content: "\e81b";
+}
+.alert.alert-styled-left {
+  border-left-width: 44px;
+}
+.alert.alert-styled-left[class*=bg-] {
+  border-left-color: rgba(0, 0, 0, 0.15) !important;
+}
+.alert.alert-styled-right {
+  border-right-width: 44px;
+}
+.alert.alert-styled-right[class*=bg-] {
+  border-right-color: rgba(0, 0, 0, 0.15) !important;
+}
+.alert:not(.ui-pnotify)[class*=alert-arrow-]:before,
+.ui-pnotify.alert[class*=alert-arrow-] > .brighttheme:before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  border-left: 5px solid;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left-color: inherit;
+  margin-top: -5px;
+}
+.alert:not(.ui-pnotify).alert-arrow-right:before,
+.ui-pnotify.alert.alert-arrow-right > .brighttheme:before {
+  left: auto;
+  right: 0;
+  border-left: 0;
+  border-right: 5px solid;
+  border-right-color: inherit;
+}
+
+.alert-primary {
+    /*color: #004085;*/
+    background-color: #cce5ff;
+    /*border-color: #b8daff;*/
+}
+
+.alert-secondary {
+    /*color: #383d41;*/
+    background-color: #e2e3e5;
+    /*border-color: #d6d8db;*/
+}
+
+.alert-success {
+    /*color: #155724;*/
+    background-color: #e8f5e9;
+    /*border-color: #c3e6cb;*/
+}
+
+.alert-danger {
+    /*color: #721c24;*/
+    background-color: #fbe9e7;
+    /*border-color: #f5c6cb;*/
+}
+
+.alert-warning {
+    /*color: #856404;*/
+    background-color: #fff3cd;
+    /*border-color: #ffeeba;*/
+}
+
+.alert-info {
+    /*color: #0c5460;*/
+    background-color: #d1ecf1;
+    /*border-color: #bee5eb;*/
+}
+
+
+.alert-styled-custom-info:after {
+    content: "\e9ba" !important;
+    font-size: 34px !important;
+    margin-top: -16px !important;
+}

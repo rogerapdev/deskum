@@ -1,0 +1,100 @@
+.card-img-left {
+  border-top-left-radius: calc(0.25rem - 1px);
+  border-bottom-left-radius: calc(0.25rem - 1px); }
+
+.card-img-top-left {
+  border-top-left-radius: calc(0.25rem - 1px); }
+
+.card-img-bottom-left {
+  border-bottom-left-radius: calc(0.25rem - 1px); }
+
+.card-img-right {
+  border-top-right-radius: calc(0.25rem - 1px);
+  border-bottom-right-radius: calc(0.25rem - 1px); }
+
+.card-img-top-right {
+  border-top-right-radius: calc(0.25rem - 1px); }
+
+.card-img-bottom-right {
+  border-bottom-right-radius: calc(0.25rem - 1px); }
+
+@media (min-width: 576px) {
+  .card-img-sm-left {
+    border-top-left-radius: calc(0.25rem - 1px);
+    border-bottom-left-radius: calc(0.25rem - 1px); }
+
+  .card-img-sm-top-left {
+    border-top-left-radius: calc(0.25rem - 1px); }
+
+  .card-img-sm-bottom-left {
+    border-bottom-left-radius: calc(0.25rem - 1px); }
+
+  .card-img-sm-right {
+    border-top-right-radius: calc(0.25rem - 1px);
+    border-bottom-right-radius: calc(0.25rem - 1px); }
+
+  .card-img-sm-top-right {
+    border-top-right-radius: calc(0.25rem - 1px); }
+
+  .card-img-sm-bottom-right {
+    border-bottom-right-radius: calc(0.25rem - 1px); } }
+@media (min-width: 768px) {
+  .card-img-md-left {
+    border-top-left-radius: calc(0.25rem - 1px);
+    border-bottom-left-radius: calc(0.25rem - 1px); }
+
+  .card-img-md-top-left {
+    border-top-left-radius: calc(0.25rem - 1px); }
+
+  .card-img-md-bottom-left {
+    border-bottom-left-radius: calc(0.25rem - 1px); }
+
+  .card-img-md-right {
+    border-top-right-radius: calc(0.25rem - 1px);
+    border-bottom-right-radius: calc(0.25rem - 1px); }
+
+  .card-img-md-top-right {
+    border-top-right-radius: calc(0.25rem - 1px); }
+
+  .card-img-md-bottom-right {
+    border-bottom-right-radius: calc(0.25rem - 1px); } }
+@media (min-width: 992px) {
+  .card-img-lg-left {
+    border-top-left-radius: calc(0.25rem - 1px);
+    border-bottom-left-radius: calc(0.25rem - 1px); }
+
+  .card-img-lg-top-left {
+    border-top-left-radius: calc(0.25rem - 1px); }
+
+  .card-img-lg-bottom-left {
+    border-bottom-left-radius: calc(0.25rem - 1px); }
+
+  .card-img-lg-right {
+    border-top-right-radius: calc(0.25rem - 1px);
+    border-bottom-right-radius: calc(0.25rem - 1px); }
+
+  .card-img-lg-top-right {
+    border-top-right-radius: calc(0.25rem - 1px); }
+
+  .card-img-lg-bottom-right {
+    border-bottom-right-radius: calc(0.25rem - 1px); } }
+@media (min-width: 1200px) {
+  .card-img-xl-left {
+    border-top-left-radius: calc(0.25rem - 1px);
+    border-bottom-left-radius: calc(0.25rem - 1px); }
+
+  .card-img-xl-top-left {
+    border-top-left-radius: calc(0.25rem - 1px); }
+
+  .card-img-xl-bottom-left {
+    border-bottom-left-radius: calc(0.25rem - 1px); }
+
+  .card-img-xl-right {
+    border-top-right-radius: calc(0.25rem - 1px);
+    border-bottom-right-radius: calc(0.25rem - 1px); }
+
+  .card-img-xl-top-right {
+    border-top-right-radius: calc(0.25rem - 1px); }
+
+  .card-img-xl-bottom-right {
+    border-bottom-right-radius: calc(0.25rem - 1px); } }

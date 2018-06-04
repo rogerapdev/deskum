@@ -1,0 +1,28 @@
+{
+    "name": "eius/alert",
+    "description": "Easy alert notifications",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rogério Ap. Silva",
+            "email": "devrealiza@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "~5.0"
+    },
+    "require-dev": {
+        "mockery/mockery": "dev-master",
+        "phpunit/phpunit": "^6.1"
+    },
+    "autoload": {
+        "psr-0": {
+            "Eius\\Alert": "src/"
+        },
+        "files": [
+            "src/Eius/Flash/functions.php"
+        ]
+    },
+    "minimum-stability": "stable"
+}

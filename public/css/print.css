@@ -1,0 +1,52 @@
+table.print {
+	border-collapse: collapse;
+	width: 100%;
+	font-size: 11px;
+}
+
+table.print tr:not(:last-child) td {
+    border-bottom: 1px solid #626262 !important;
+}
+
+table.print td, table.print th {
+	/*border-bottom: 1px solid #626262;*/
+	padding: 5px !important;
+	text-align: left;
+}
+
+/*table.print tr:last-child td
+{
+   border-bottom: none;
+}*/
+
+
+@page
+{
+    size: auto;   /* auto is the initial value */
+
+    /* this affects the margin in the printer settings */
+    /*margin: 25mm 25mm 25mm 25mm;*/
+    /*margin-top: 0mm;*/
+    /*margin: 0;*/
+}
+
+/* first PDF page */
+@page :first {
+	/* ensure you append the header/footer name with 'html_' */
+	header: html_page-header; /* sets <htmlpageheader name="P1Header"> as the header */
+	footer: html_page-footer; /* sets <htmlpagefooter name="P1Footer"> as the footer */
+}
+
+/* odd / left PDF page */
+@page :left {
+	/* ensure you append the header/footer name with 'html_' */
+	header: html_page-header; /* sets <htmlpageheader name="leftHeader"> as the header */
+	footer: html_page-footer; /* sets <htmlpagefooter name="leftFooter"> as the footer */
+}
+
+/* even / right PDF page */
+@page :right {
+	/* ensure you append the header/footer name with 'html_' */
+	header: html_page-header; /* sets <htmlpageheader name="rightHeader"> as the header */
+	footer: html_page-footer; /* sets <htmlpagefooter name="rightFooter"> as the footer */
+}

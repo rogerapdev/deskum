@@ -1,0 +1,22 @@
+/*IE10 and IE11   (Method 2)
+==================*/
+@media all and (-ms-high-contrast:none){
+	.navbar-brand{
+		padding-top: 0px !important;
+	}
+
+	.logo-svg{
+		margin-top: 0px !important;
+	}
+}
+
+/*----MS Edge Browser CSS Start----*/
+@supports (-ms-ime-align:auto) {
+	.navbar-brand{
+		padding-top: 0px !important;
+	}
+
+	.logo-svg{
+		margin-top: 0px !important;
+	}
+}
