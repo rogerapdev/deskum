@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Criteria\Filters\TicketCriteria;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CommentRequest;
 use App\Http\Requests\TicketRequest;
 use App\Repositories\TicketRepository;
+use Dependency;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
@@ -31,11 +33,16 @@ class TicketController extends Controller
     public function index()
     {
 
+        $optionsStatus = Dependency::optionsRepository('App\Repositories\TicketRepository', 'optionsStatus');
+        $colorsStatus = Dependency::optionsRepository('App\Repositories\TicketRepository', 'colorsStatus');
+        $optionsPriority = Dependency::optionsRepository('App\Repositories\TicketRepository', 'optionsPriority');
+        $colorsPriority = Dependency::optionsRepository('App\Repositories\TicketRepository', 'colorsPriority');
+
         $this->repository->pushCriteria(new TicketCriteria);
         $tickets = $this->repository->paginate(env('PER_PAGE'));
         $links = str_replace('/?', '?', $tickets->render());
 
-        return view('helpdesk.tickets.index', compact('tickets', 'links'));
+        return view('helpdesk.tickets.index', compact('tickets', 'links', 'optionsStatus', 'colorsStatus', 'optionsPriority', 'colorsPriority'));
     }
 
     /**
@@ -133,6 +140,30 @@ class TicketController extends Controller
             $this->repository->delete($id);
         } catch (Exception $e) {
             return back();
+        }
+
+        return redirect('tickets');
+    }
+
+    /**
+     * Update the given resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function comment(CommentRequest $request, $id)
+    {
+
+        // dd($request->all());
+
+        try {
+
+            $this->repository->commentAndNotify($request->all(), $id);
+
+        } catch (Exception $e) {
+            return back()->withInput();
         }
 
         return redirect('tickets');

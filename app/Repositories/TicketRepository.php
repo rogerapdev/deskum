@@ -3,6 +3,7 @@
 use App\Models\Requester;
 use App\Repositories\Repository;
 use App\Services\MyToken;
+use Auth;
 
 // use Illuminate\Support\Facades\DB;
 
@@ -30,6 +31,44 @@ class TicketRepository extends Repository
             'merged' => 'Mesclado',
             'spam' => 'Spam',
         ];
+    }
+
+    public function colorsStatus()
+    {
+        return [
+            'new' => 'secondary',
+            'open' => 'info',
+            'pending' => 'warning',
+            'solved' => 'success',
+            'closed' => 'dark',
+            'merged' => 'brown',
+            'spam' => 'danger',
+        ];
+
+    }
+
+    public function optionsPriority()
+    {
+        return [
+            '' => '---',
+            'low' => 'Baixa',
+            'medium' => 'Média',
+            'high' => 'Alta',
+            'urgent' => 'Urgente',
+        ];
+
+    }
+
+    public function colorsPriority()
+    {
+        return [
+            '' => '---',
+            'low' => 'success',
+            'medium' => 'primary',
+            'high' => 'warning',
+            'urgent' => 'danger',
+        ];
+
     }
 
     private function syncRequester($attributes, $requester_id = null)
@@ -72,7 +111,9 @@ class TicketRepository extends Repository
         $attributes['requester_id'] = $requester->id;
 
         $token = new MyToken($this->model());
-        $data['public_token'] = $token->unique('', 'public_token', 7);
+        $attributes['public_token'] = $token->unique('', 'public_token', 7);
+        $attributes['status'] = 'new';
+        $attributes['priority'] = 'medium';
 
         // $attributes['public_token'] = str_random(24);
 
@@ -101,6 +142,34 @@ class TicketRepository extends Repository
         unset($attributes['requester']);
 
         return parent::update($attributes, $id);
+    }
+
+    /**
+     * Update a entity in repository by id
+     *
+     * @throws ValidatorException
+     *
+     * @param array $attributes
+     * @param       $id
+     *
+     * @return mixed
+     */
+    public function commentAndNotify(array $attributes, $id)
+    {
+
+        $instance = $this->find($id);
+
+        if (isset($attributes['new_status']) and $attributes['new_status'] and $attributes['new_status'] != $instance->status) {
+            $instance->update(['status' => $attributes['new_status']]);
+        } elseif (!isset($attributes['new_status']) or !$attributes['new_status']) {
+            $attributes['new_status'] = $instance->status;
+        }
+        $attributes['user_id'] = Auth::user()->id;
+
+        $instance->comments()->create($attributes);
+
+        return $instance;
+
     }
 
 }

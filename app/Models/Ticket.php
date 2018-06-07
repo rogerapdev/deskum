@@ -70,43 +70,14 @@ class Ticket extends Model
         return $this->belongsTo('App\Models\Project', 'project_id', 'id');
     }
 
-    public static function findWithPublicToken($public_token)
-    {
-        return self::where('public_token', $public_token)->firstOrFail();
-    }
-
+    /**
+     * A state may have multiple cities.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function comments()
     {
-        return $this->commentsAndNotes()->where('private', false);
+        return $this->hasMany('App\Models\Comment', 'ticket_id', 'id');
     }
 
-    public function commentsAndNotes()
-    {
-        return $this->hasMany(Comment::class)->latest();
-    }
-
-    public function commentsAndNotesAndEvents()
-    {
-        return $this->commentsAndNotes->toBase()->merge($this->events);
-    }
-
-    public function events()
-    {
-        return $this->hasMany(TicketEvent::class)->latest();
-    }
-
-    public function tags()
-    {
-        return $this->morphToMany(Tag::class, 'taggable');
-    }
-
-    public function attachments()
-    {
-        return $this->morphMany(Attachment::class, 'attachable');
-    }
-
-    public function mergedTickets()
-    {
-        return $this->belongsToMany(self::class, 'merged_tickets', 'ticket_id', 'merged_ticket_id');
-    }
 }

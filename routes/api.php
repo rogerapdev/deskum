@@ -18,8 +18,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // Only internal network IP address
-Route::group(['middleware' => ['ip:127.0.0.1,192.168.*']], function () {
+Route::group(['middleware' => ['ip:127.0.0.1,192.168.*', 'checktoken']], function () {
 
     // Your ip restricted routes goes here!
+
+    Route::name('token.')->prefix('token')->group(function () {
+        Route::get('new')->name('new')->uses('Api\TokenController@newToken');
+
+    });
+
+    Route::name('tickets.')->prefix('tickets')->group(function () {
+        Route::get('/')->name('index')->uses('Api\TicketController@index');
+    });
 
 });

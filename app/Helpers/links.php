@@ -19,3 +19,8 @@ function active_url($slug)
 
     return in_url($slug) ? 'active' : '';
 }
+
+function prefix()
+{
+    return str_replace("/", "", \Route::getCurrentRoute()->getPrefix());
+}

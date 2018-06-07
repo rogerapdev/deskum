@@ -55,26 +55,33 @@
 
 						<div class="container">
 
-							<div class="row">
-								<div class="col-md-6">
-									<h6 class="text-semibold"><i class="im im-pencil7"></i> Criar comentário</h6>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group row">
-										<label for="new_status" class="col-sm-2 col-form-label">Situação:</label>
-										<div class="col-sm-10">
-											{{ Form::select('new_status', [], $ticket->status, array('class' => 'form-control select-search')) }}
-										</div>
-									</div>
-								</div>
-							</div>
+							@if(!in_array($ticket->status, ['closed']))
 							<!-- Basic layout-->
 							<form action="{{ route('tickets.comment', [Hasher::encode($ticket->id)]) }}" method="POST">
 								<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 								<div class="row">
+									<div class="col-md-6">
+										<h6 class="text-semibold"><i class="im im-pencil7"></i> Criar comentário</h6>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group row">
+											<label for="new_status" class="col-sm-2 col-form-label">Situação:</label>
+											<div class="col-sm-10">
+												{{ Form::select('new_status', Dependency::optionsRepository('App\Repositories\TicketRepository', 'optionsStatus'), $ticket->status, array('class' => 'form-control select-search')) }}
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
 									<div class="col-md-12">
-										<textarea class="form-control" rows="5" name="message">{{ old('message','') }}</textarea>
+										<textarea class="form-control" rows="5" name="body">{{ old('body','') }}</textarea>
+										@if ($errors->has('body'))
+											<span class="help-block text-danger">
+												{{ $errors->first('body') }}
+											</span>
+										@endif
 									</div>
 								</div>
 
@@ -87,39 +94,29 @@
 							</form>
 							<!-- /basic layout -->
 							<hr/>
+							@endif
 
 
 							<div class="row">
 								<div class="comments col-md-9" id="comments">
-									<!-- comment -->
-									<div class="comment mb-2 row">
-										<div class="comment-avatar col-md-1 col-sm-2 text-center pr-1">
-											<a href=""><img class="mx-auto rounded-circle img-fluid" src="http://via.placeholder.com/50x50" alt="avatar"></a>
-										</div>
-										<div class="comment-content col-md-11 col-sm-10">
-											<h6 class="small comment-meta"><span class="text-primary">admin</span> Today, 2:38</h6>
-											<div class="comment-body">
-												<p>
-													Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod <a href>http://wwwwww.com</a> tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
-												</p>
+
+									@foreach($ticket->comments->sortByDesc('created_at') as $comment)
+										<!-- comment -->
+										<div class="comment mb-2 row">
+											<div class="comment-avatar col-md-1 col-sm-2 text-center pr-1">
+												<a href=""><img class="mx-auto rounded-circle img-fluid" src="http://via.placeholder.com/50x50" alt="avatar"></a>
+											</div>
+											<div class="comment-content col-md-11 col-sm-10">
+												<h6 class="small comment-meta"><span class="text-primary">{{ $comment->user->name }}</span> {{ Date::make($comment->created_at)->diffForHumans() }}</h6>
+												<div class="comment-body">
+													<p>
+														{{ $comment->body }}
+													</p>
+												</div>
 											</div>
 										</div>
-									</div>
-									<!-- /comment -->
-									<!-- comment -->
-									<div class="comment mb-2 row">
-										<div class="comment-avatar col-md-1 col-sm-2 text-center pr-1">
-											<a href=""><img class="mx-auto rounded-circle img-fluid" src="http://via.placeholder.com/50x50" alt="avatar"></a>
-										</div>
-										<div class="comment-content col-md-11 col-sm-10">
-											<h6 class="small comment-meta"><span class="text-primary">maslarino</span> Yesterday, 5:03 PM</h6>
-											<div class="comment-body">
-												<p>Sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
-												</p>
-											</div>
-										</div>
-									</div>
-									<!-- /comment -->
+										<!-- /comment -->
+									@endforeach
 								</div>
 							</div>
 						</div>

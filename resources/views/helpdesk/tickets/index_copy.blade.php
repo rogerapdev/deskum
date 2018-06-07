@@ -61,15 +61,15 @@
 							<div class="row">
 								@foreach ($chunk as $ticket)
 								<div class="col-md-6">
-									<div class="card card-border card-border-{{ $colorsStatus[$ticket->status] }}" style="font-size: 13px;">
+									<div class="card card-border" style="font-size: 13px;">
 										<div class="card-body px-2 py-2">
 											<div class="row">
 												<div class="col-md-8">
 													<h6 class="mt-0"><a href="{{ route('tickets.read', [Hasher::encode($ticket->id)]) }}" class="text-primary font-weight-bold">#{{ $ticket->public_token }} - {{ $ticket->title }}</a></h6>
-													<p class="mb-15">{{ str_limit($ticket->body, 45) }}</p>
-													<ul class="list-unstyled">
+													<p class="mb-15">{!! str_limit(strip_tags($ticket->body), 100) !!}</p>
+													<ul class="pl-2">
 														<li><b>Solicitante:</b> {{ $ticket->requester->name }}</li>
-														<li><b>Técnico:</b> {{ $ticket->user_id ? $ticket->user->name : '---------' }}</li>
+														<li><b>Técnico:</b> &nbsp;---------</li>
 													</ul>
 												</div>
 
@@ -78,7 +78,7 @@
 														<li>{{ Date::make($ticket->created_at)->format('j F Y') }}</li>
 														<li class="dropdown">
 											        		Prioridade: &nbsp;
-											        		<label class="font-weight-bold bg-{{ $colorsPriority[$ticket->priority] }} text-white px-1">{{ $optionsPriority[$ticket->priority] }}</label>
+											        		<label class="font-weight-bold bg-danger text-white px-1">Urgente</label>
 														</li>
 														<li><span class="font-weight-bold">{{ $ticket->project->name }}</span></li>
 													</ul>
@@ -95,8 +95,8 @@
 													<div class="btn-group">
 													<a href="#" class="btn pull-right dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon-menu"></i></a>
 													<div class="dropdown-menu dropdown-menu-right">
-														{{-- <a href="#" class="dropdown-item"><i class="im im-merge"></i> Mesclar</a> --}}
-														{{-- <div class="dropdown-divider"></div> --}}
+														<a href="#" class="dropdown-item">Mesclar</a>
+														<div class="dropdown-divider"></div>
 														<a class="dropdown-item" href="{{ route('tickets.edit', [Hasher::encode($ticket->id)]) }}"><i class="far fa-edit fa-1x"></i> Alterar</a>
 														<a href="#" class="dropdown-item"><i class="text-danger far fa-times-circle fa-1x"></i> Remover</a>
 													</div>
@@ -112,6 +112,63 @@
 							</div>
 
 							@endforeach
+
+							<div class="row">
+								<div class="col-md-6">
+									<div class="card card-border card-border-danger" style="font-size: 13px;">
+										<div class="card-body">
+											<div class="row">
+												<div class="col-md-8">
+													<h6 class="mt-0"><a href="#" class="text-primary font-weight-bold">#99SQAVK - Segundo teste de atendimento</a></h6>
+													<p class="mb-15">Como devo criar um funcionário administrador</p>
+													<ul class="pl-2">
+														<li><b>Solicitante:</b> &nbsp;realiza - </li>
+														<li><b>Técnico:</b> &nbsp;---------</li>
+													</ul>
+												</div>
+
+												<div class="col-md-4">
+													<ul class="pl-2">
+														<li>23 fevereiro 2018</li>
+														<li class="dropdown">
+											        		Prioridade: &nbsp;
+											        		<label class="font-weight-bold bg-danger text-white px-1">Urgente</label>
+														</li>
+														<li><span class="font-weight-bold">Pergunta</span></li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="card card-border card-border-success" style="font-size: 13px;">
+										<div class="card-body">
+											<div class="row">
+												<div class="col-md-8">
+													<h6 class="mt-0"><a href="#" class="text-primary font-weight-bold">#99SQAVK - Segundo teste de atendimento</a></h6>
+													<p class="mb-15">Como devo criar um funcionário administrador</p>
+													<ul class="pl-2">
+														<li><b>Solicitante:</b> &nbsp;realiza - </li>
+														<li><b>Técnico:</b> &nbsp;---------</li>
+													</ul>
+												</div>
+
+												<div class="col-md-4">
+													<ul class="pl-2">
+														<li>23 fevereiro 2018</li>
+														<li class="dropdown">
+											        		Prioridade: &nbsp;
+											        		<label class="font-weight-bold bg-success text-white px-1">Urgente</label>
+														</li>
+														<li><span class="font-weight-bold">Pergunta</span></li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
 
 							@if(isset($links) and $links)
 							<hr>

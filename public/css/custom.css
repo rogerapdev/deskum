@@ -64,6 +64,31 @@
   border-left-color: #ef5350;
 }
 
+.card-border-info {
+  border-left-color: #37cbdd;
+}
+
+.card-border-warning {
+  border-left-color: #ffcf3c;
+}
+
+.card-border-dark {
+  border-left-color: #343a40;
+}
+
+.card-border-orange{
+  border-left-color: #ef9c5a;
+}
+
+
+.card-border-purple{
+  border-left-color: #ec98e3;
+}
+
+
+.card-border-brown{
+  border-left-color: #b5403a;
+}
 
 /*.breadcrumb-item{
   padding: .375rem .75rem 0rem 0rem;

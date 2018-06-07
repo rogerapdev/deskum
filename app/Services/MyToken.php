@@ -18,6 +18,30 @@ class MyToken extends Token
      *
      * @return string
      */
+    public function client($project_token = null, $size = 25, $special = false)
+    {
+
+        $project_token = !$project_token ? env('PROJECT_TOKEN') : $project_token;
+
+        $this->SpecialCharacter = $special;
+        do {
+
+            $code = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            $code .= "0123456789";
+
+            $tokenClient = $this->Generate($code, $size);
+            $t = $this->model->where('project_token', $project_token)->where('client_token', $tokenClient)->first();
+
+        } while ($t);
+
+        return $tokenClient;
+    }
+
+    /**
+     * Create a new Unique Token.
+     *
+     * @return string
+     */
     public function Unique($table, $col, $size, $special = false)
     {
         $this->SpecialCharacter = $special;
