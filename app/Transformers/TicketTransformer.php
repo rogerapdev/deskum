@@ -17,6 +17,7 @@ class TicketTransformer extends Transformer
             'requester' => [
                 'name' => $ticket->requester->name,
                 'email' => $ticket->requester->email,
+                'external_id' => $ticket->requester->external_id,
             ],
         ];
     }

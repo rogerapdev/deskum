@@ -18,6 +18,7 @@ class CreateHkRequestersTable extends Migration
             $table->string('name');
             $table->string('email')->unique()->nullable();
             $table->unsignedBigInteger('external_id')->nullable();
+            $table->string('client_token')->nullable();
             $table->timestamps();
 
             // Engine
