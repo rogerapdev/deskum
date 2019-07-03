@@ -73,7 +73,7 @@
                     <br>
                     <br>
                     <br>
-                    @include('elements.logos.svg_primeiro_02')
+                    {{-- @include('elements.logos.svg_primeiro_02') --}}
                 </div>
 
             </div>

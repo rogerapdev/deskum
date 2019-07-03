@@ -28,6 +28,8 @@ class CheckToken
             if (!$request->header('X-Client-Token')) {
                 abort(403, 'Não foi possivel efetuar a autenticação!');
             }
+            // \Config::set('database.default', env('DB_DATABASE'));
+            // abort(403, \DB::getDatabaseName());
 
             $found = Token::where('project_token', $request->header('X-Project-Token'))->where('client_token', $request->header('X-Client-Token'))->first();
             if (!$found) {

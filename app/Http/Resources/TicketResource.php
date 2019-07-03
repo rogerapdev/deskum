@@ -14,6 +14,20 @@ class TicketResource extends JsonResource
      */
     public function toArray($request)
     {
+
+        return [
+            'id' => $this->public_token,
+            'title' => $this->title,
+            'status' => $this->status,
+            'priority' => $this->priority,
+            'body' => $this->body,
+            'requester' => [
+                'name' => $this->requester->name,
+                'email' => $this->requester->email,
+                'external_id' => $this->requester->external_id,
+            ],
+        ];
+
         return parent::toArray($request);
     }
 }
